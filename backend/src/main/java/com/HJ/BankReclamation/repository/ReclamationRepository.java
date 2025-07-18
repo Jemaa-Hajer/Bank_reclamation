@@ -1,4 +1,7 @@
 package com.HJ.BankReclamation.repository;
 
-public interface ReclamationRepository {
+import com.HJ.BankReclamation.model.Reclamation;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ReclamationRepository  extends JpaRepository<Reclamation, Integer> {
 }

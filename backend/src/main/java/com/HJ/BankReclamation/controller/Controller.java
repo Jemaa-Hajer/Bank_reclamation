@@ -1,4 +1,4 @@
-package com.HJ.BankReclamation.mvcController;
+package com.HJ.BankReclamation.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
