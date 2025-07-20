@@ -1,21 +1,19 @@
-package com.HJ.BankReclamation.model;
+package com.HJ.BankReclamation.dtos;
 
+import com.HJ.BankReclamation.model.Client;
+import com.HJ.BankReclamation.model.ReclamationStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
-@Entity
-@Table(name = "reclamation")
-public class Reclamation {
+
+public class ReclamationResponseDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idR")
     private Integer idR;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "idC", nullable = false)
-    private Client client;
 
     @NotBlank(message = "Description is required")
     @Column(name = "descp", nullable = false, columnDefinition = "TEXT")
@@ -31,17 +29,9 @@ public class Reclamation {
     @Column(name = "service", nullable = false, length = 100)
     private String service;
 
-
-    @Column(name = "dateC", nullable = false)
-    private LocalDateTime dateC;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, columnDefinition = "ENUM('pending','in progress','resolved','rejected')")
     private ReclamationStatus status;
-
-    @Column(nullable = false)
-    private boolean deleted = false;
-
 
     public Integer getIdR() {
         return idR;
@@ -51,13 +41,6 @@ public class Reclamation {
         this.idR = idR;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
 
     public String getDescp() {
         return descp;
@@ -99,12 +82,7 @@ public class Reclamation {
         this.dateC = dateC;
     }
 
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
+    @Column(name = "dateC", nullable = false)
+    private LocalDateTime dateC;
 
 }

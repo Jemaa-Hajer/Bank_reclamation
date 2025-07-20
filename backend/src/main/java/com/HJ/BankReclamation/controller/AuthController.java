@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
-
 @RestController
 @RequestMapping("/api/auth")
 
@@ -40,7 +39,7 @@ public class AuthController {
             return ResponseEntity.ok(apiResponse);
         } catch (IllegalArgumentException e) {
             ApiResponse<ClientResponseDto> apiError = new ApiResponse<>("error","Login unsuccessful", null);
-            return ResponseEntity.status(404).body(apiError);
+            return ResponseEntity.status(403).body(apiError);
         }
 
 

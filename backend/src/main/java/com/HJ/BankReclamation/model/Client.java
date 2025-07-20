@@ -50,9 +50,6 @@ public class Client {
     @Column(name = "status", nullable = false, columnDefinition = "ENUM('active','inactive')")
     private ClientStatus status;
 
-    public Client() {
-    }
-
     public Integer getIdC() {
         return idC;
     }
