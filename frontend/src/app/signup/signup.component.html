@@ -1,0 +1,49 @@
+<div class="sign-up-container">
+    <h2>Sign up</h2>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="errorMessage" class="error" >{{errorMessage}}</div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input id="name" formControlName="name" type="text" placeholder="Enter your name">
+            <div *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.invalid" class="error" >
+                Name is required and must be at least 2 characters.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="srname">Surname:</label>
+            <input id="surname" formControlName="surname" type="text" placeholder="Enter you surname">
+            <div *ngIf="signUpForm.get('surname')?.touched && signUpForm.get('surname')?.invalid" class="error" >
+                Surname is required and must be at least 2 characters.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" formControlName="email" placeholder="Enter yor email">
+            <div *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid" class="error">
+                Valid email is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile:</label>
+            <input id="mobile" type="tel" formControlName="mobile" placeholder="Enter your mobile number">
+            <div *ngIf="signUpForm.get('mobile')?.touched && signUpForm.get('mobile')?.invalid" class="error">
+                Valid mobile number is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="numC">Client Number:</label>
+            <input id="numC" formControlName="numC" type="text" placeholder="Enter client number">
+            <div *ngIf="signUpForm.get('numC')?.touched && signUpForm.get('numC')?.invalid" class="error">
+                Client number is required and must be 3-50 alphanumeric characters.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input id="pwd" formControlName="pwd" type="password" placeholder="Enter password">
+            <div *ngIf="signUpForm.get('pwd')?.touched && signUpForm.get('pwd')?.invalid" class="error">
+                Password is required and must be at least 6 characters.
+            </div>
+        </div>
+        <button type="submit" [disabled]="signUpForm.invalid" >Sign up</button>
+    </form>
+</div>
